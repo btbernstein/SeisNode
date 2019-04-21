@@ -1,4 +1,4 @@
-import RPi.GPIO as GPIO
+from g import collect_datum as gps
 
 times_g = []
 lats = []
@@ -15,5 +15,3 @@ while True:
     t_g = str(t_g).split('-')[0]
     #print(t_g)
     times_g.append(t_g)
-    
-if __name__ == "name":
