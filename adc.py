@@ -23,8 +23,9 @@ voltages = []
 def collect_adc():
     try:
         with chan0 as chan:
-            # Recieve voltage values          
-            voltages.append(chan.voltage)
+            while True:
+                # Recieve voltage values          
+                voltages.append(chan.voltage)
     except:
         return voltages
 
