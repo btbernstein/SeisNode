@@ -53,11 +53,13 @@ while cont:
             writer.writerows(arr.T)
 
         writeFile.close()
-    prompt = 0
-    while str.lower(prompt) != 'y' or str.lower(prompt) != 'n':
+    prompt = 'a'
+    while True:
         prompt = input("Record another station? (Y/n): ")
-    if str.lower(prompt) == 'y':
-        cont = True
-        i += 1
-    else:
-        cont = False
+        if str.lower(prompt) == "y":
+            cont = True
+            i += 1
+            break
+        elif str.lower(prompt) == "n":
+            cont = False
+            break
