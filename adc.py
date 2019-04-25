@@ -10,7 +10,7 @@ i2c = busio.I2C(board.SCL, board.SDA)
 
 # Create the ADC object using the I2C bus
 ads = ADS.ADS1115(i2c)
-ads.gain = 16
+ads.gain = 4
 ads.mode = 0x0000
 ads.data_rate = 860
 ads.comparator_config = 0
