@@ -17,10 +17,8 @@ ads.comparator_config = 0
 # Create single-ended input on channel 0
 chan0 = AnalogIn(ads, ADS.P0)
 
-# Arrays to store volages
-voltages = []
-
 def collect_adc():
+    voltages = []
     try:
         with chan0 as chan:
             while True:
