@@ -9,6 +9,6 @@ sudo python3 setup.py install
 
 cd ~
 
-sudo pip3 install  adafruit-blinka RPI.GPIO  adafruit-circuitpython-ads1x15
+sudo pip3 install adafruit-blinka RPI.GPIO
 
 exit 0
