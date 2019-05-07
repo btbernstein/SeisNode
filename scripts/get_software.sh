@@ -13,4 +13,6 @@ sudo chmod +x /home/pi/Rpi/scripts/start_sensors.sh
 . /home/pi/Rpi/scripts/start_sensors.sh
 cd ~/
 
+sudo reboot now
+
 exit 0
