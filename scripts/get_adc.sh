@@ -7,7 +7,7 @@ git clone -b fast_read https://github.com/caternuson/Adafruit_CircuitPython_ADS1
 cd ~/Rpi/Adafruit_CircuitPython_ADS1x15
 sudo python3 setup.py install
 
-cd ~
+cd ~/
 
 sudo pip3 install adafruit-blinka RPI.GPIO
 
