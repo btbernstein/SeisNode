@@ -1,10 +1,16 @@
 #!/bin/bash
 
-cd ~/Rpi
-sudo chmod +x get_gps.sh
-./get_gps.sh
-sudo chmod +x get_adc.sh
-./get_adc.sh
-sudo chmod +x start_sensors.sh
+sudo pip install --upgrade pip
+sudo pip3 install --upgrade pip
+
+sudo chmod +x /home/pi/Rpi/scripts/get_gps.sh
+. /home/pi/Rpi/scripts/get_gps.sh
+sudo chmod +x /home/pi/Rpi/scripts/get_adc.sh
+. /home/pi/Rpi/scripts/get_adc.sh
+sudo chmod +x /home/pi/Rpi/scripts/change_rc.sh
+. /home/pi/Rpi/scripts/change_rc.sh
+sudo chmod +x /home/pi/Rpi/scripts/start_sensors.sh
+
+cd ~/
 
 exit 0
