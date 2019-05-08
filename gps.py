@@ -25,10 +25,12 @@ def main():
         writer = csv.writer(writefile)
         writer.writerow(["Time", "Lat", "Lat Err", "Lon", "Lon Err", "Alt", "Alt Err"])
         while True:
-        # Recieve GPS values
-            data = collect_gps()
-            writer.writerow(data)
-            time.sleep(1)
+            try: 
+                data = collect_gps()
+                writer.writerow(data)
+                time.sleep(1)
+            except:
+                pass
 
 if __name__ == "__main__":
     main()
