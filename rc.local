@@ -4,6 +4,10 @@ sleep 60
 /usr/bin/python /home/pi/Rpi/pifinder.py &
 . /home/pi/Rpi/scripts/start_sensors.sh
 
+/usr/bin/python3 /home/pi/Rpi/test_gps.py
+echo "Ready to collect"
+echo "Collecting..."
+/usr/bin/python3 /home/pi/Rpi/gps.py &
 /usr/bin/python3 /home/pi/Rpi/collect_adc.py &
 
 exit 0
