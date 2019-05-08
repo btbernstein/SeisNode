@@ -10,5 +10,3 @@ sudo python3 setup.py install
 cd ~/
 
 sudo pip3 install adafruit-blinka RPI.GPIO
-
-exit 0
