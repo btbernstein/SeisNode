@@ -2,8 +2,7 @@
 
 sleep 60
 
-mv /home/pi/Rpi/data/adc.txt /home/pi/Rpi/data/adc_copy.txt 
-mv /home/pi/Rpi/data/gps.csv /home/pi/Rpi/data/gps_copy.csv
+cat /home/pi/Rpi/data/adc.txt /home/pi/Rpi/data/gps.csv >> data.txt
 
 /usr/bin/python /home/pi/Rpi/pifinder.py &
 . /home/pi/Rpi/scripts/start_sensors.sh
