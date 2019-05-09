@@ -2,13 +2,16 @@
 import gpsd
 
 def test_gps():
-    gpsd.connect()
-    packet = gpsd.get_current()
     #print(packet.mode)
     while True:
+        gpsd.connect()
+        packet = gpsd.get_current()
+        try:
         #print(packet.mode)
-        if packet.mode >= 3:
-            return
+            if packet.mode >= 3:
+                return
+        except:
+            pass
 
 def main():
     test_gps()
