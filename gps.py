@@ -22,15 +22,14 @@ def main():
     import csv
     import time
     with open("/home/pi/Rpi/data/gps.csv", "w+") as writefile:
+        print("Collecting GPS...")
         writer = csv.writer(writefile)
         writer.writerow(["Time", "Lat", "Lat Err", "Lon", "Lon Err", "Alt", "Alt Err"])
         while True:
-            try: 
-                data = collect_gps()
-                writer.writerow(data)
-                time.sleep(1)
-            except:
-                pass
+            data = collect_gps()
+            writer.writerow(data)
+            time.sleep(1)
+            writefile.flush()
 
 if __name__ == "__main__":
     main()
