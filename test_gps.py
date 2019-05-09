@@ -9,6 +9,7 @@ def test_gps():
         try:
         #print(packet.mode)
             if packet.mode >= 3:
+                print("GPS Online.")
                 return
         except:
             pass
