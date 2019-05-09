@@ -19,7 +19,7 @@ chan0 = AnalogIn(ads, ADS.P0)
 
 with open("/home/pi/Rpi/data/adc.txt", "w+") as f:
     with chan0 as chan:
-        print("Collecting")
+        print("Collecting Voltages...")
         while True:
             # Recieve voltage values
             f.write(str(chan.voltage) + "\n")
