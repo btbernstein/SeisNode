@@ -53,6 +53,7 @@ while True:
                 writer.writerow(data)
                 writefile.flush()
             writefile.close()
+            shot += 1
     
     prev_z = zAccl
-    shot += 1
+    
