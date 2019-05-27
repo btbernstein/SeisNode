@@ -15,6 +15,6 @@ cd /scripts/
 rm get_software.sh lcd.sh
 curl -o home/pi/Rpi/scripts/get_software.sh https://raw.githubusercontent.com/btbernstein/Rpi/master/scripts/get_software.sh
 sudo chmod +x /home/pi/Rpi/scripts/get_software.sh
-curl -o /home/pi/Rpi/scripts/lcd.py https://raw.githubusercontent.com/btbernstein/Rpi/master/scripts/lcd.sh
+curl -o /home/pi/Rpi/scripts/lcd.sh https://raw.githubusercontent.com/btbernstein/Rpi/master/scripts/lcd.sh
 sudo chmod +x /home/pi/Rpi/scripts/lcd.sh
 . /home/pi/Rpi/scripts/lcd.sh
