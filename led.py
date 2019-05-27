@@ -19,13 +19,13 @@ initialize()
 def turn_on():
     initialize()
     GPIO.output(pin, GPIO.HIGH)
-    time.sleep(.05)
+    #time.sleep(.05)
     #GPIO.cleanup()
 
 def turn_off():
     #initialize()
     GPIO.output(pin, GPIO.LOW)
-    time.sleep(.05)
+    #time.sleep(.05)
 
 if __name__ == "__main__":
     for i in range(2):
