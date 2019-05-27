@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 
-pin = 7
+pin = 21
 
 def pulse():
     GPIO.output(pin,GPIO.HIGH)
