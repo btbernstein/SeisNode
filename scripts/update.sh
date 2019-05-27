@@ -12,7 +12,9 @@ curl -o test_gps.py https://raw.githubusercontent.com/btbernstein/Rpi/master/tes
 curl -o trigger.py https://raw.githubusercontent.com/btbernstein/Rpi/master/trigger.py
 
 cd /scripts/
-rm lcd.sh
+rm get_software.sh lcd.sh
+curl -o trigger.py https://raw.githubusercontent.com/btbernstein/Rpi/master/scripts/get_software.sh
+sudo chmod +x /home/pi/Rpi/scripts/get_software.sh
 curl -o trigger.py https://raw.githubusercontent.com/btbernstein/Rpi/master/scripts/lcd.sh
 sudo chmod +x /home/pi/Rpi/scripts/lcd.sh
 . /home/pi/Rpi/scripts/lcd.sh
