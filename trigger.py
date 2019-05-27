@@ -29,6 +29,7 @@ while True:
         zAccl -= 4096
         
     # if z acceleration changes by some great amount
+    prev_z = 1000
     if abs((prev_z-zAccl)/zAccl) >= 1.0: ### Change this
         bus.write_byte_data(0x1D, 0x2A, 0)
         # record GPS for 1 second.
