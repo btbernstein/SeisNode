@@ -14,6 +14,4 @@ sudo chmod +x /home/pi/Rpi/scripts/start_sensors.sh
 sudo chmod +x /home/pi/Rpi/scripts/lcd.sh
 . /home/pi/Rpi/scripts/lcd.sh
 
-sudo reboot now
-
 exit 0
