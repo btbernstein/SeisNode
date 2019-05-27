@@ -10,7 +10,7 @@ def test_gps():
             packet = gpsd.get_current()
             if packet.mode >= 3:
                 print("GPS Online.")
-                for i in range(2):
+                for i in range(4):
                     led.pulse()
                 return
         except:
