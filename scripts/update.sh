@@ -13,6 +13,7 @@ curl -o test_gps.py https://raw.githubusercontent.com/btbernstein/Rpi/master/tes
 curl -o trigger.py https://raw.githubusercontent.com/btbernstein/Rpi/master/trigger.py
 
 . /home/pi/Rpi/scripts/change_rc.sh
+>/home/pi/Rpi/data/data.txt
 
 cd /scripts/
 rm get_software.sh lcd.sh
