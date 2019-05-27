@@ -28,5 +28,5 @@ def turn_off():
     #time.sleep(.05)
 
 if __name__ == "__main__":
-    for i in range(2):
+    while True:
         pulse()
