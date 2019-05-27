@@ -3,6 +3,7 @@ import time
 from gps import collect_gps as GPS
 import led
 import numpy as np
+import csv
 
 bus = smbus.SMBus(1)
 shot = 0
