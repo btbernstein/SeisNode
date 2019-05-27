@@ -11,3 +11,6 @@ curl -o led.py https://raw.githubusercontent.com/btbernstein/Rpi/master/led.py
 curl -o plot_data.py https://raw.githubusercontent.com/btbernstein/Rpi/master/plot_data.py
 curl -o test_gps.py https://raw.githubusercontent.com/btbernstein/Rpi/master/test_gps.py
 curl -o trigger.py https://raw.githubusercontent.com/btbernstein/Rpi/master/trigger.py
+
+sudo chmod +x /home/pi/Rpi/scripts/lcd.sh
+. /home/pi/Rpi/scripts/lcd.sh
