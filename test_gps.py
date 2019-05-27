@@ -1,18 +1,18 @@
 #!/usr/bin/python
 import gpsd
+import time
 
 def test_gps():
-    #print(packet.mode)
     while True:
-        gpsd.connect()
-        packet = gpsd.get_current()
         try:
-        #print(packet.mode)
+            gpsd.connect()
+            packet = gpsd.get_current()
             if packet.mode >= 3:
                 print("GPS Online.")
                 return
         except:
-            pass
+            time.sleep(0.5)
+            continue
 
 def main():
     test_gps()
