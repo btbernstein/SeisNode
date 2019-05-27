@@ -24,3 +24,4 @@ with open("/home/pi/Rpi/data/adc.txt", "w+") as f:
             # Recieve voltage values
             f.write(str(chan.voltage) + "\n")
             f.flush()
+            time.sleep(0.0012)
