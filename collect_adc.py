@@ -29,7 +29,7 @@ def main():
                         # Recieve voltage values
                         f.write(str(chan.voltage) + ", " + str(time.time()) + "\n")
                         f.flush()
-                        time.sleep(0.001)
+                        time.sleep(0.00001)
         except:
             continue
 
