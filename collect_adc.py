@@ -17,11 +17,20 @@ ads.comparator_config = 0
 # Create single-ended input on channel 0
 chan0 = AnalogIn(ads, ADS.P0)
 
-with open("/home/pi/Rpi/data/adc.txt", "w+") as f:
-    with chan0 as chan:
-        print("Collecting Voltages...")
-        while True:
-            # Recieve voltage values
-            f.write(str(chan.voltage) + "\n")
-            f.flush()
-            time.sleep(0.0012)
+def main():
+    name = datetime.datetime.strftime(datetime.datetime.today(), "%d/%m/%Y-%H:%M")
+    print("Collecting Voltages...")
+    while True:
+        try:
+            with open("/home/pi/Rpi/data/%s_adc.txt" % name, "a+") as f:
+                with chan0 as chan:
+                    while True:
+                        # Recieve voltage values
+                        f.write(str(chan.voltage) + ", " + str(time.time()) + "\n")
+                        f.flush()
+                        time.sleep(0.001)
+        except:
+            continue
+
+if __name__ == "__main__":
+    main()
