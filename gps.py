@@ -26,7 +26,7 @@ def main():
     print("Collecting GPS...")
     while True:
         try:
-            with open("/home/pi/Rpi/data/%s_gps.csv" % name, "a+") as writefile:
+            with open("/home/pi/Rpi/data/%s_gps.csv" % name, "w+") as writefile:
                 writer = csv.writer(writefile)
                 writer.writerow(["Time", "Lat", "Lat Err", "Lon", "Lon Err", "Alt", "Alt Err"])
                 while True:
