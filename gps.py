@@ -38,7 +38,7 @@ def main():
             name_err = str(datetime.datetime.now())
             with open("/home/pi/Rpi/data/errors.txt", "a+") as writefile:
                 writer = csv.writer(writefile)
-                writer.writerow(name_err)
+                writer.writerow([name_err])
 
 if __name__ == "__main__":
     main()
