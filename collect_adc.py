@@ -18,11 +18,11 @@ ads.comparator_config = 0
 chan0 = AnalogIn(ads, ADS.P0)
 
 def main():
-    name = datetime.datetime.strftime(datetime.datetime.today(), "%d/%m/%Y-%H:%M")
+    name = datetime.datetime.strftime(datetime.datetime.today(), "%d-%m-%Y_%H:%M")
     print("Collecting Voltages...")
     while True:
         try:
-            with open("/home/pi/Rpi/data/%s_adc.txt" % name, "w+") as f:
+            with open("/home/pi/Rpi/data/%s_adc.txt" % name, "a+") as f:
                 with chan0 as chan:
                     while True:
                         # Recieve voltage values
