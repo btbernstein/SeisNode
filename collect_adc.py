@@ -22,7 +22,7 @@ def main():
     print("Collecting Voltages...")
     while True:
         try:
-            with open("/home/pi/Rpi/data/%s_adc.txt" % name, "a+") as f:
+            with open("/home/pi/Rpi/data/%s_adc.txt" % name, "w+") as f:
                 with chan0 as chan:
                     while True:
                         # Recieve voltage values
