@@ -22,11 +22,11 @@ def collect_gps():
         return data
 
 def main():
-    name = datetime.datetime.strftime(datetime.datetime.today(), "%d/%m/%Y-%H:%M")
+    name = datetime.datetime.strftime(datetime.datetime.today(), "%d-%m-%Y_%H:%M")
     print("Collecting GPS...")
     while True:
         try:
-            with open("/home/pi/Rpi/data/%s_gps.csv" % name, "w+") as writefile:
+            with open("/home/pi/Rpi/data/%s_gps.csv" % name, "a+") as writefile:
                 writer = csv.writer(writefile)
                 writer.writerow(["Time", "Lat", "Lat Err", "Lon", "Lon Err", "Alt", "Alt Err"])
                 while True:
