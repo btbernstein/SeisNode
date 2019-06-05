@@ -1,5 +1,8 @@
 #!/usr/bin/python
 import gpsd
+import csv
+import time
+import datetime
 
 def collect_gps():
     gpsd.connect()
@@ -19,17 +22,23 @@ def collect_gps():
         return data
 
 def main():
-    import csv
-    import time
-    with open("/home/pi/Rpi/data/gps.csv", "w+") as writefile:
-        print("Collecting GPS...")
-        writer = csv.writer(writefile)
-        writer.writerow(["Time", "Lat", "Lat Err", "Lon", "Lon Err", "Alt", "Alt Err"])
-        while True:
-            data = collect_gps()
-            writer.writerow(data)
-            time.sleep(1)
-            writefile.flush()
+    name = datetime.datetime.strftime(datetime.datetime.today(), "%d/%m/%Y-%H:%M")
+    print("Collecting GPS...")
+    while True:
+        try:
+            with open("/home/pi/Rpi/data/%s_gps.csv" % name, "a+") as writefile:
+                writer = csv.writer(writefile)
+                writer.writerow(["Time", "Lat", "Lat Err", "Lon", "Lon Err", "Alt", "Alt Err"])
+                while True:
+                    data = collect_gps()
+                    writer.writerow(data)
+                    time.sleep(1)
+                    writefile.flush()
+        except:
+            name_err = str(datetime.datetime.now())
+            with open("/home/pi/Rpi/data/errors.txt", "a+") as writefile:
+                writer = csv.writer(writefile)
+                writer.writerow(name_err)
 
 if __name__ == "__main__":
     main()
