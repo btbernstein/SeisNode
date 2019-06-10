@@ -28,7 +28,6 @@ def main():
         try:
             with open("/home/pi/Rpi/data/%s_gps.csv" % name, "a+") as writefile:
                 writer = csv.writer(writefile)
-                writer.writerow(["Time", "Lat", "Lat Err", "Lon", "Lon Err", "Alt", "Alt Err"])
                 while True:
                     data = collect_gps()
                     writer.writerow(data)
