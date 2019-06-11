@@ -1,38 +1,47 @@
+
+import numpy as np
+import time
+import board
+import busio
+import adafruit_ads1x15.ads1115 as ADS
+from adafruit_ads1x15.analog_in import AnalogIn
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use("TkAgg")
 
-def plot(t ):
+# Create the I2C bus
+i2c = busio.I2C(board.SCL, board.SDA)
 
-    plt.show(block=True)
+# Create the ADC object using the I2C bus
+ads = ADS.ADS1115(i2c)
+ads.gain = 2
+ads.mode = 0x0000
+ads.data_rate = 860
+ads.comparator_config = 0
+# Create single-ended input on channel 0
+chan0 = AnalogIn(ads, ADS.P0)
 
-    fig,ax = plt.subplots(4,1,figsize=(16,10))
-    ax[0].plot(times_v,voltages)
-    ax[0].set_title("Geophone Readings: n=%i Data Points" % len(voltages), fontsize=16, fontweight="bold")
-    ax[0].set_xlabel("Time (seconds)", fontsize=14, fontweight="bold")
-    ax[0].set_ylabel("Voltage", fontsize=14, fontweight="bold")
-    
-    ax[1].errorbar(times_g,lats,yerr=lat_err)
-    ax[1].set_title("Latitude: n=%i Data Points" % len(lats), fontsize=16, fontweight="bold")
-    ax[1].set_xlabel("Time", fontsize=14, fontweight="bold")
-    ax[1].set_ylabel("Latitude (Decimal$^\circ$)", fontsize=14, fontweight="bold")
-    ax[0,1].xaxis.set_ticks(times_g[::4], rotation=45)
-    
-    ax[2].errorbar(times_g,lons,yerr=lon_err)
-    ax[2].set_title("Longitude: n=%i Data Points" % len(lons), fontsize=16, fontweight="bold")
-    ax[2].set_xlabel("Time", fontsize=14, fontweight="bold")
-    ax[2].set_ylabel("Longitude (Decimal$^\circ$)", fontsize=14, fontweight="bold")
-    
-    ax[3].errorbar(times_g,alts,yerr=alt_err)
-    ax[3].set_title("Altitude: n=%i Data Points" % len(alts), fontsize=16, fontweight="bold")
-    ax[3].set_xlabel("Time", fontsize=14, fontweight="bold")
-    ax[3].set_ylabel("Altitude (meters)", fontsize=14, fontweight="bold")
-
-    for axi in ax.flat:
-        if axi != ax[0]:
-          plt.setp(axi.xaxis.get_majorticklabels(),rotation=20)
-        axi.xaxis.set_major_locator(plt.MaxNLocator(5))
-
-    plt.tight_layout()
-    plt.savefig("all")
-
-    plt.subplots_adjust(hspace=0.5)    
+def plot():
+    plt.ion()
+    fig = plt.figure(figsize=(12,6))
+    ax = fig.add_subplot(111)
+#     plt.title("Geophone Readings", fontsize=16, fontweight="bold")
+#     plt.xlabel("Time (seconds)", fontsize=14, fontweight="bold")
+#     plt.ylabel("Voltage", fontsize=14, fontweight="bold")
+    #ax.xaxis.set_major_locator(plt.MaxNLocator(10))
+    i = 0
+    time_0 = time.time()
+    times = []
+    voltages = []
+    plt.show()
+    while True:
+        times.append(time.time()-time_0)
+        voltages.append(i*i)
+        plt.clf()
+        
+        ax.plot(times,voltages)
+        #plt.show(block=True)
+        plt.pause(5)
+        i += 1
+    plt.ioff()
     plt.show(block=True)
