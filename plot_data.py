@@ -45,3 +45,5 @@ def plot():
         i += 1
     plt.ioff()
     plt.show(block=True)
+
+plot()
