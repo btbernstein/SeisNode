@@ -22,7 +22,7 @@ def collect_gps():
         return data
 
 def main():
-    name = datetime.datetime.strftime(datetime.datetime.today(), "%d-%m-%Y_%H:%M")
+    name = datetime.datetime.strftime(datetime.datetime.today(), "%d-%m-%Y_%H-%M")
     print("Collecting GPS...")
     while True:
         try:
