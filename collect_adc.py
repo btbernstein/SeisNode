@@ -19,7 +19,7 @@ ads.comparator_config = 0
 chan0 = AnalogIn(ads, ADS.P0)
 
 def main():
-    name = datetime.datetime.strftime(datetime.datetime.today(), "%d-%m-%Y_%H:%M")
+    name = datetime.datetime.strftime(datetime.datetime.today(), "%d-%m-%Y_%H-%M")
     print("Collecting Voltages...")
     while True:
         try:
