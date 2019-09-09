@@ -28,7 +28,7 @@ def main():
     name = datetime.datetime.strftime(datetime.datetime.today(), "%d-%m-%Y_%H-%M")
     print("Collecting GPS...")
     while True:
-        Try:
+        try:
             data = collect_gps()
             time.sleep(5)
 
