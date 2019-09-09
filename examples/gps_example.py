@@ -22,6 +22,7 @@ def collect_gps():
         data_label = ["Time","Latitude","Latitude Error","Longitude","Longitude Error","Altitude","Altitude Error"]
         for d,l in zip(data,data_label):
             print(l+":",d) 
+        print()
 
 def main():
     name = datetime.datetime.strftime(datetime.datetime.today(), "%d-%m-%Y_%H-%M")
@@ -29,7 +30,7 @@ def main():
     while True:
         Try:
             data = collect_gps()
-            time.sleep(1)
+            time.sleep(5)
 
         except KeyboardInterrupt:
             return
