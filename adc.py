@@ -278,12 +278,16 @@ def _quit():
     root.destroy()  # this is necessary on Windows to prevent
                     # Fatal Python Error: PyEval_RestoreThread: NULL tstate
 
+def main():
 
-initialisation1()
-initialisation2()
-Read_Data()
+	initialisation1()
+	initialisation2()
+	i = 0
+	t0 = time.time()
+	while time.time()-t0 < 10:
+		i += 1
+		Read_Data()
+	print(i)
 
-while True:
-
-    Read_Data()
-    time.sleep(0.5)
+if __name__ == "__main__":
+	main()
