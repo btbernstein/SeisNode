@@ -38,9 +38,6 @@ spi.open(0,1)					# open spi port 0, device (CS)1
 spi.max_speed_hz = (500000)
 spi.mode = (1)
 
-print("test")
-
-
 
 
 count = 0
@@ -194,19 +191,19 @@ def Read_Data():
 	
     print("0x %x %x %x\t"%(buff[0],buff[1],buff[2]))
     value = buff[0]<<16 | buff[1]<<8 | buff[2]
-    print(value)
+    #print(value)
     volt = (float(value) * .000244140625)
-    print(volt,"mV")
+    #print(volt,"mV")
 
-    #print("0x %x %x %x\t"%(buff[0],buff[1],buff[2]))
-    '''print int(buff[0])
-    print int(buff[1])'''
+#     #print("0x %x %x %x\t"%(buff[0],buff[1],buff[2]))
+#     '''print int(buff[0])
+#     print int(buff[1])'''
 
-    '''print int(buff2[0])
-    print int(buff3[0])'''
+#     '''print int(buff2[0])
+#     print int(buff3[0])'''
 
 
-    return buff;
+    return volt
     #return r
 
 def Read_adcvoltage():
@@ -279,15 +276,23 @@ def _quit():
                     # Fatal Python Error: PyEval_RestoreThread: NULL tstate
 
 def main():
-
+	times = [0.1,1,10,60]
+	sps = []
 	initialisation1()
 	initialisation2()
 	i = 0
-	t0 = time.time()
-	while time.time()-t0 < 10:
-		i += 1
-		Read_Data()
-	print(i)
+	for time in times:
+		t0 = time.time()
+		while time.time()-t0 < time:
+			Read_Data()
+			i += 1
+		sps.append(i/time)
+
+	plt.figure(figsize=(10,5)
+    plt.plot(times,sps)
+	plt.xlabel("Time (s)")
+    plt.ylabel("Samples per second")
+    plt.show()
 
 if __name__ == "__main__":
 	main()
