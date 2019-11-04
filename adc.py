@@ -6,7 +6,7 @@ import time
 import sys
 import RPi.GPIO as GPIO
 from array import *
-
+import matplotlib.pyplot as plt
 
 RREG = 0x20
 WREG = 0x40
@@ -189,7 +189,7 @@ def Read_Data():
     #time.sleep(0.002)               # sleep for 0.1 seconds
     GPIO.output(CS_PIN, True)
 	
-    print("0x %x %x %x\t"%(buff[0],buff[1],buff[2]))
+    #print("0x %x %x %x\t"%(buff[0],buff[1],buff[2]))
     value = buff[0]<<16 | buff[1]<<8 | buff[2]
     #print(value)
     volt = (float(value) * .000244140625)
@@ -278,20 +278,34 @@ def _quit():
 def main():
 	times = [0.1,1,10,60]
 	sps = []
+	volts_full = []
 	initialisation1()
 	initialisation2()
-	i = 0
-	for time in times:
-		t0 = time.time()
-		while time.time()-t0 < time:
-			Read_Data()
-			i += 1
-		sps.append(i/time)
 
-	plt.figure(figsize=(10,5)
+	for tim in times:
+		volts = []
+		t0 = time.time()
+		while time.time()-t0 < tim:
+			volts.append(Read_Data())
+		sps.append(len(volts)/tim)
+		volts_full.append(volts)
+
+	plt.figure(figsize=(20,10)
+	plt.subplot(1,2,1)
     plt.plot(times,sps)
-	plt.xlabel("Time (s)")
-    plt.ylabel("Samples per second")
+	plt.xlabel("Time (s)",fontsize=25,fontweight="bold)
+    plt.ylabel("Samples per second",fontsize=25,fontweight="bold)
+	plt.xticks(fontsize=20)
+	plt.yticks(fontsize=20)
+			
+    times_arr = np.linspace(0,times[-1],len(volts_full[-1])
+    plt.subplot(1,2,2)
+    plt.plot(times_arr,volts_full[-1])
+	plt.xlabel("Time (s)",fontsize=25,fontweight="bold)
+    plt.ylabel("Samples per second",fontsize=25,fontweight="bold)
+	plt.xticks(fontsize=20)
+	plt.yticks(fontsize=20)	  
+    plt.tight_layout()
     plt.show()
 
 if __name__ == "__main__":
