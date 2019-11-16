@@ -35,7 +35,7 @@ GPIO.setup(DRDY_PIN,GPIO.IN)
 
 spi = spidev.SpiDev()				# create spi object
 spi.open(0,1)					# open spi port 0, device (CS)1
-spi.max_speed_hz = (200000)
+spi.max_speed_hz = (400)
 spi.mode = (1)
 
 
@@ -203,7 +203,7 @@ def Read_Data():
 #     print int(buff3[0])'''
 
 
-    return volt
+    return value
     #return r
 
 def Read_adcvoltage():
@@ -227,7 +227,7 @@ def ADCRead():
         #if 1:
         data = Read_adcvoltage();
         #val = ((data[5]&0xff) << 16) | ((data[6]&0xff) << 8) | (data[7]&0xff)
-        val = ((data[6]&0xff) << 16) + ((data[7]&0xff) << 8) + (data[8]&0xff)
+        val = ((data[0]&0xff) << 16) + ((data[1]&0xff) << 8) + (data[2]&0xff)
         #val = (data&0xff0000) + (data&0xff00) + (data&0xff)
         val = int(val)
 
@@ -236,7 +236,7 @@ def ADCRead():
         else:
             value = val
 			
-        voltage = (float(value)*100/8388607)
+        voltage = (float(value)*2.4018/8388607)
 
         #print("DRDY_PIN : %s\nvalue: %s"%((GPIO.input(DRDY_PIN)),value))
         #print "drdy false"
@@ -276,7 +276,7 @@ def _quit():
                     # Fatal Python Error: PyEval_RestoreThread: NULL tstate
 
 def main():
-    times = [0.1,1,10,60]
+    times = [5]
     sps = []
     volts_full = []
     initialisation1()
@@ -290,16 +290,10 @@ def main():
         sps.append(len(volts)/tim)
         volts_full.append(volts)
 
-    plt.figure(figsize=(20,10))
-    plt.subplot(1,2,1)
-    plt.plot(times,sps)
-    plt.xlabel("Time (s)",fontsize=25,fontweight="bold")
-    plt.ylabel("Samples per second",fontsize=25,fontweight="bold")
-    plt.xticks(fontsize=20)
-    plt.yticks(fontsize=20)
+    plt.figure(figsize=(8,4))
 			
     times_arr = np.linspace(0,times[-1],len(volts_full[-1]))
-    plt.subplot(1,2,2)
+
     plt.plot(times_arr,volts_full[-1])
     plt.xlabel("Time (s)",fontsize=25,fontweight="bold")
     plt.ylabel("Samples per second",fontsize=25,fontweight="bold")
