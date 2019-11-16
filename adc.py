@@ -35,7 +35,7 @@ GPIO.setup(DRDY_PIN,GPIO.IN)
 
 spi = spidev.SpiDev()				# create spi object
 spi.open(0,1)					# open spi port 0, device (CS)1
-spi.max_speed_hz = (500000)
+spi.max_speed_hz = (200000)
 spi.mode = (1)
 
 
@@ -307,6 +307,19 @@ def main():
 	plt.yticks(fontsize=20)	  
     plt.tight_layout()
     plt.show()
-
+			   
+def collect_adc():
+    name = datetime.datetime.strftime(datetime.datetime.today(), "%d-%m-%Y_%H-%M")
+    print("Collecting Voltages...")
+    while True:
+    	with open("/home/pi/Rpi/data/%s_adc.txt" % name, "a+") as f:
+		try:
+			while True:
+				# Recieve voltage values
+				f.write(str(Read_Data()) + ", " + str(time.time()) + "\n")
+				f.flush()
+        except:
+            continue
+			   
 if __name__ == "__main__":
-	main()
+	collect_adc()
