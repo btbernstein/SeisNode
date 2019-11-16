@@ -276,49 +276,49 @@ def _quit():
                     # Fatal Python Error: PyEval_RestoreThread: NULL tstate
 
 def main():
-	times = [0.1,1,10,60]
-	sps = []
-	volts_full = []
-	initialisation1()
-	initialisation2()
+    times = [0.1,1,10,60]
+    sps = []
+    volts_full = []
+    initialisation1()
+    initialisation2()
 
-	for tim in times:
-		volts = []
-		t0 = time.time()
-		while time.time()-t0 < tim:
-			volts.append(Read_Data())
-		sps.append(len(volts)/tim)
-		volts_full.append(volts)
+    for tim in times:
+        volts = []
+        t0 = time.time()
+        while time.time()-t0 < tim:
+            volts.append(Read_Data())
+        sps.append(len(volts)/tim)
+        volts_full.append(volts)
 
-	plt.figure(figsize=(20,10)
-	plt.subplot(1,2,1)
+    plt.figure(figsize=(20,10))
+    plt.subplot(1,2,1)
     plt.plot(times,sps)
-	plt.xlabel("Time (s)",fontsize=25,fontweight="bold)
-    plt.ylabel("Samples per second",fontsize=25,fontweight="bold)
-	plt.xticks(fontsize=20)
-	plt.yticks(fontsize=20)
+    plt.xlabel("Time (s)",fontsize=25,fontweight="bold")
+    plt.ylabel("Samples per second",fontsize=25,fontweight="bold")
+    plt.xticks(fontsize=20)
+    plt.yticks(fontsize=20)
 			
-    times_arr = np.linspace(0,times[-1],len(volts_full[-1])
+    times_arr = np.linspace(0,times[-1],len(volts_full[-1]))
     plt.subplot(1,2,2)
     plt.plot(times_arr,volts_full[-1])
-	plt.xlabel("Time (s)",fontsize=25,fontweight="bold)
-    plt.ylabel("Samples per second",fontsize=25,fontweight="bold)
-	plt.xticks(fontsize=20)
-	plt.yticks(fontsize=20)	  
+    plt.xlabel("Time (s)",fontsize=25,fontweight="bold")
+    plt.ylabel("Samples per second",fontsize=25,fontweight="bold")
+    plt.xticks(fontsize=20)
+    plt.yticks(fontsize=20)	  
     plt.tight_layout()
     plt.show()
 			   
 def collect_adc():
     name = datetime.datetime.strftime(datetime.datetime.today(), "%d-%m-%Y_%H-%M")
     print("Collecting Voltages...")
-	with open("/home/pi/Rpi/data/%s_adc.txt" % name, "a+") as f:
-    	while True:
-			try:
+    with open("/home/pi/Rpi/data/%s_adc.txt" % name, "a+") as f:
+        while True:
+            try:
 				# Recieve voltage values
-				f.write(str(Read_Data()) + ", " + str(time.time()) + "\n")
-				f.flush()
-			except:
-				continue
+                f.write(str(Read_Data()) + ", " + str(time.time()) + "\n")
+                f.flush()
+            except:
+                continue
 			   
 if __name__ == "__main__":
-	collect_adc()
+    collect_adc()
