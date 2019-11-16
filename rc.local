@@ -11,7 +11,6 @@ sudo cat /home/pi/Rpi/data/adc.txt >> /home/pi/Rpi/data/data.txt
 /usr/bin/python3 /home/pi/Rpi/test_gps.py
 echo "Ready to collect."
 /usr/bin/python3 /home/pi/Rpi/gps.py &
-/usr/bin/python3 /home/pi/Rpi/collect_adc.py &
+/usr/bin/python3 /home/pi/Rpi/adc.py &
 /usr/bin/python3 /home/pi/Rpi/led.py &
 
-exit 0
