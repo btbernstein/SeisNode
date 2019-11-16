@@ -311,15 +311,14 @@ def main():
 def collect_adc():
     name = datetime.datetime.strftime(datetime.datetime.today(), "%d-%m-%Y_%H-%M")
     print("Collecting Voltages...")
-    while True:
-    	with open("/home/pi/Rpi/data/%s_adc.txt" % name, "a+") as f:
-		try:
-			while True:
+	with open("/home/pi/Rpi/data/%s_adc.txt" % name, "a+") as f:
+    	while True:
+			try:
 				# Recieve voltage values
 				f.write(str(Read_Data()) + ", " + str(time.time()) + "\n")
 				f.flush()
-        except:
-            continue
+			except:
+				continue
 			   
 if __name__ == "__main__":
 	collect_adc()
