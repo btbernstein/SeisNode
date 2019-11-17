@@ -58,9 +58,9 @@ class ADS1220:
 
     def __init__(self, device):
  
-        self.__spi = SpiDev(0,device)
+        self.__spi = spidev.SpiDev()
 
-        self.__spi.open(self.__spi, mode=1)
+        self.__spi.open(0, device)
 
         # Reset the device and make sure that all registers are clear
         self.command_reset()
@@ -77,15 +77,15 @@ class ADS1220:
 
     @staticmethod
     def read_register(register):
-        return self.__spi.xfer([0x20 | (register & 0x03) << 2], 1)[0]
+        return self.__spi.xfer2([0x20 | (register & 0x03) << 2], 1)[0]
 
     @staticmethod
     def write_register(register, data):
-        self.__spi.write([0x40 | (register & 0x03) << 2, data])
+        self.__spi.xfer2([0x40 | (register & 0x03) << 2, data])
 
     @staticmethod
     def read_data():
-        return self.__spi.xfer([0x10], 3)
+        return self.__spi.xfer2([0x10], 3)
 
     def __update_register(self):
         # Read configuration register 0
@@ -117,14 +117,14 @@ class ADS1220:
 
     # Commands
     @staticmethod
-    def command_reset():
+    def command_reset(self):
         """
         RESET (0000 011x)
 
         Resets the device to the default values. Wait at least (50us + 32 · t(CLK)) after the RESET command is sent
         before sending any other command.
         """
-        self.__spi.write([0x06])
+        self.__spi.xfer2([0x06])
 
     def command_start(self):
         """
@@ -143,7 +143,7 @@ class ADS1220:
                 raise ValueError("When AINn = AVSS internal low-noise PGA must be disabled!")
             if self.__gain > 0x02:
                 raise ValueError("When AINn = AVSS only gain 1, 2 and 4 can be used")
-        self.__spi.write([0x08])
+        self.__spi.xfer2([0x08])
 
     @staticmethod
     def command_power_down():
@@ -156,7 +156,7 @@ class ADS1220:
         power-down mode. As soon as a START/SYNC command is issued, all analog components return to their previous
         states.
         """
-        self.__spi.write([0x02])
+        self.__spi.xfer2([0x02])
 
     # Registers
     def set_mux(self, mux):
