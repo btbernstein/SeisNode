@@ -5,7 +5,7 @@ sleep 60
 sudo cat /home/pi/Rpi/data/gps.csv >> /home/pi/Rpi/data/data.txt
 sudo cat /home/pi/Rpi/data/adc.txt >> /home/pi/Rpi/data/data.txt
 
-/usr/bin/python /home/pi/Rpi/pifinder.py &
+/usr/bin/python /home/pi/Rpi/scripts/pifinder.py &
 . /home/pi/Rpi/scripts/start_sensors.sh
 
 /usr/bin/python3 /home/pi/Rpi/test_gps.py
