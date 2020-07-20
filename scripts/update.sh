@@ -12,7 +12,7 @@ curl -o rc.local https://raw.githubusercontent.com/btbernstein/Rpi/master/rc.loc
 curl -o test_gps.py https://raw.githubusercontent.com/btbernstein/Rpi/master/test_gps.py
 curl -o trigger.py https://raw.githubusercontent.com/btbernstein/Rpi/master/trigger.py
 
-sudo chmod +x /home/pi/Rpi/scripts/get_software.sh
+sudo chmod +x /home/pi/Rpi/scripts/change_rc.sh
 . /home/pi/Rpi/scripts/change_rc.sh
 
 cd /scripts/
