@@ -1,16 +1,15 @@
 #!/bin/bash
 
-sleep 60
-
-sudo cat /home/pi/Rpi/data/gps.csv >> /home/pi/Rpi/data/data.txt
-sudo cat /home/pi/Rpi/data/adc.txt >> /home/pi/Rpi/data/data.txt
+sleep 6
+. /home/pi/Rpi/scripts/startup.py
 
 #/usr/bin/python /home/pi/Rpi/scripts/pifinder.py &
-. /home/pi/Rpi/scripts/start_sensors.sh
+#. /home/pi/Rpi/scripts/start_sensors.sh
 
-/usr/bin/python3 /home/pi/Rpi/test_gps.py
-echo "Ready to collect."
-/usr/bin/python3 /home/pi/Rpi/gps.py &
-/usr/bin/python3 /home/pi/Rpi/adc.py &
-/usr/bin/python3 /home/pi/Rpi/led.py &
+
+#/usr/bin/python3 /home/pi/Rpi/test_gps.py
+#echo "Ready to collect."
+#/usr/bin/python3 /home/pi/Rpi/gps.py &
+#/usr/bin/python3 /home/pi/Rpi/adc.py &
+#/usr/bin/python3 /home/pi/Rpi/led.py &
 
