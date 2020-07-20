@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sleep 6
-. /home/pi/Rpi/scripts/startup.py
+. /home/pi/SeisNode/scripts/startup.py
 
 #/usr/bin/python /home/pi/Rpi/scripts/pifinder.py &
 #. /home/pi/Rpi/scripts/start_sensors.sh
