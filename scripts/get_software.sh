@@ -15,7 +15,7 @@ sudo chmod +x /home/pi/SeisNode/scripts/start_sensors.sh
 sudo chmod +x /home/pi/SeisNode/scripts/lcd.sh
 . /home/pi/SeisNode/scripts/lcd.sh
 
-sudo chmod +x /home/pi/SeisNode/scripts/startup.py
+sudo chmod +x /home/pi/SeisNode/SeisNode/startup.py
 
 sudo chmod +x /home/pi/SeisNode/scripts/change_rc.sh
 . /home/pi/SeisNode/scripts/change_rc.sh
