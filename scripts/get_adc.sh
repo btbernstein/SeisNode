@@ -9,4 +9,4 @@ sudo apt-get install build-essential python3-dev python3-smbus python-dev python
 
 cd ~/
 
-sudo pip3 install adafruit-blinka RPI.GPIO
+sudo pip3 install adafruit-blinka RPI.GPIO pandas
