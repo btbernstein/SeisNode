@@ -18,4 +18,4 @@ sudo chmod +x /home/pi/SeisNode/scripts/change_rc.sh
 . /home/pi/SeisNode/scripts/change_rc.sh
 
 sudo chmod +x /home/pi/SeisNode/scripts/lcd.sh
-. /home/pi/SeisNode/scripts/lcd.sh
+#. /home/pi/SeisNode/scripts/lcd.sh
