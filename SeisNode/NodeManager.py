@@ -101,6 +101,7 @@ class NodeManager:
         """
         Plots the 3 data components
         """
+        import matplotlib.pyplot as plt
         plt.figure(figsize=(12,15))
         plt.subplot(311)
         plt.plot(vz)
