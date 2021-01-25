@@ -80,7 +80,7 @@ class NodeManager:
         vz,vx,vy = self.node.collect_data()
         #threading.Thread(target=self._flush_node).start()
         if plot_data:
-            plot_data(vz,vx,vy)
+            self.plot_data(vz,vx,vy)
             
     def write_data_csv(self,filename=self.data_path):
         """
