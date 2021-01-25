@@ -58,7 +58,8 @@ class NodeManager:
         
         # GPS is connected when the sensor has a 3D lock (mode=3)
         gpsd.connect()
-        while gpsd.get_current().mode != 3:
+        packet = gpsd.get_current()
+        while packet.mode != 3:
             continue
         return True   
     
