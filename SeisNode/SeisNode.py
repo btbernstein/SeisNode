@@ -40,7 +40,7 @@ class SeisNode:
         self.ads = ADS.ADS1115(i2c)
         self.ads.gain = self.gain
         self.ads.mode = Mode.CONTINUOUS
-        self.ads.data_rate = data_rate
+        self.ads.data_rate = self.data_rate
         #self.ads.comparator_config = 0
         
     def set_gain(self,gain):
