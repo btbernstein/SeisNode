@@ -5,6 +5,7 @@ from datetime import datetime as dt
 import pandas as pd
 import csv
 import threading
+from os import path
 from SeisNode import SeisNode
 
 
